@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  rs_mfi_twin:
+    image: realsense
+    container_name: rs_mfi_twin
+    network_mode: host
+    privileged: true
+    volumes:
+      - ./realsense-ros/realsense2_description:/catkin_ws/src/realsense2_description:ro
+      - ./realsense-ros/realsense2_camera:/catkin_ws/src/realsense2_camera:ro
+      - /dev:/dev
+    environment:
+      - DISPLAY
+      - ROS_MASTER_URI=http://192.168.1.2:11311
+      - ROS_IP=192.168.1.7
+    command: bash -c "roslaunch realsense2_camera rs_aligned_depth.launch"
+    tty: true
+
