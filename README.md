@@ -1,7 +1,7 @@
 **Installation**
 
 ```
-$ git clone --recursive https://github.com/cmu-mfi/realsense_ros1_docker.git
+$ git clone --recursive https://github.com/cmu-mfi/realsense-ros1-docker.git
 $ cd realsense_ros1_docker
 $ chmod +x ./run_docker.sh
 $ ./run_docker.sh
