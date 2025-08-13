@@ -7,12 +7,12 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 CATKIN_DIR=/catkin_ws
 
 docker build -t realsense .
-docker run -it --net=host --privileged \
-  --name rs_mfi_twin \
+docker run -it -d --net=host --privileged \
+  --name rs_docker \
   -v "$(pwd)/realsense-ros/realsense2_description:${CATKIN_DIR}/src/realsense2_description:ro" \
   -v "$(pwd)/realsense-ros/realsense2_camera:${CATKIN_DIR}/src/realsense2_camera:ro" \
   -v "/dev:/dev" \
   -e DISPLAY=${DISPLAY} \
-  -e ROS_MASTER_URI=http://192.168.1.2:11311 \
-  -e ROS_IP=192.168.1.7 \
+  -e ROS_MASTER_URI=${ROS_MASTER_URI}\
+  -e ROS_IP=${ROS_IP} \
   realsense bash -c "roslaunch realsense2_camera rs_aligned_depth.launch"
