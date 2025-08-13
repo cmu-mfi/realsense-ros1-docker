@@ -28,7 +28,7 @@ COPY realsense-ros/realsense2_camera/package.xml $CATKIN_DIR/src/realsense2_came
 COPY realsense-ros/realsense2_description/package.xml $CATKIN_DIR/src/realsense2_description/
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
  && apt-get update \
- && rosdep update \
+ && rosdep update --include-eol-distros\
  && rosdep install \
     --from-paths src \
     --ignore-src \
